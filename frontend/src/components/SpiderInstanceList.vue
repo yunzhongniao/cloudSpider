@@ -14,6 +14,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios'
 
 export default {
   name: 'SpiderInstanceList',
@@ -33,47 +34,7 @@ export default {
       key: 'operation',
       scopedSlots: { customRender: 'operation' }
     }]
-    const datas = [{
-      key: '1',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '2',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '3',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '4',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '5',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '6',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '7',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '8',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '9',
-      name: 'firstName',
-      site: 'http://localhost'
-    }, {
-      key: '10',
-      name: 'firstName',
-      site: 'http://localhost'
-    }]
+    const datas = []
     return {
       columns,
       datas
@@ -86,6 +47,17 @@ export default {
     onEdit: function (record) {
       console.log('edit', record)
     }
+  },
+  mounted () {
+    axios.get('books/list')
+      .then(function (response) {
+        console.log(response)
+        this.datas = response
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }
+
 }
 </script>
