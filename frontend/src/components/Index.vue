@@ -7,20 +7,19 @@
         mode="horizontal"
         :defaultSelectedKeys="['1']"
         :style="{ lineHeight: '64px' }"
+
       >
-        <a-menu-item key="1">nav 1</a-menu-item>
-        <a-menu-item key="2">nav 2</a-menu-item>
-        <a-menu-item key="3">nav 3</a-menu-item>
+        <a-menu-item key="1"><router-link to="/">Home</router-link></a-menu-item>
+        <a-menu-item key="2"><router-link to="/books">Books</router-link></a-menu-item>
+        <a-menu-item key="3"><router-link to="/contacts">contacts</router-link></a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
       <a-breadcrumb style="margin: 16px 0">
         <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
       </a-breadcrumb>
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
-        <spider-instance-list></spider-instance-list>
+        <router-view></router-view>
       </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center">
@@ -37,6 +36,7 @@ export default {
   components: {SpiderInstanceList},
   data () {
     return {
+
     }
   },
   methods: {
