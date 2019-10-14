@@ -8,7 +8,7 @@
           @confirm="() => onDelete(record)">
           <a href="javascript:;">Delete</a>
         </a-popconfirm>
-        <a-button @click="() => onEdit(record)" type="link">edit</a-button>
+        <a-button @click="() => onRun(record)" type="link">run</a-button>
       </template>
     </a-table>
 </div>
@@ -23,11 +23,11 @@ export default {
   data () {
     const columns = [{
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'spider_name',
       key: 'name'
     }, {
       title: 'Site',
-      dataIndex: 'site',
+      dataIndex: 'spider_id',
       key: 'site'
     }, {
       title: 'operation',
@@ -44,12 +44,12 @@ export default {
     onDelete: function (record) {
       console.log('delete', record)
     },
-    onEdit: function (record) {
+    onRun: function (record) {
       console.log('edit', record)
     }
   },
   mounted () {
-    axios.get('books/list')
+    axios.get('cloud/spiders')
       .then(function (response) {
         console.log(response)
         this.datas = response

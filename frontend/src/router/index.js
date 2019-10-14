@@ -4,6 +4,8 @@ import Index from '@/components/Index'
 import Home from '@/components/home/Home'
 import SpiderInstanceList from '@/components/SpiderInstanceList'
 import Books from '@/components/book/Books'
+import BookChapters from '@/components/book/BookChapters'
+import BookChapterDetail from '@/components/book/BookChapterDetail'
 import Contacts from '@/components/Contacts'
 
 Vue.use(Router)
@@ -20,12 +22,20 @@ export default new Router({
           component: Home
         },
         {
-          path: 'spider',
+          path: 'spiders',
           component: SpiderInstanceList
         },
         {
           path: 'books',
           component: Books
+        }, {
+          path: 'books/book/:bookId/chapters',
+          component: BookChapters
+        },
+        {
+          path: 'books/book/:bookId/chapter/:chapter/detail',
+          component: BookChapterDetail,
+          props: {bookId: this.$router.params.bookId, chapter: this.$router.params.chapter}
         },
         {
           path: 'contacts',
