@@ -34,8 +34,7 @@ export default new Router({
         },
         {
           path: 'books/book/:bookId/chapter/:chapter/detail',
-          component: BookChapterDetail,
-          props: {bookId: this.$router.params.bookId, chapter: this.$router.params.chapter}
+          component: BookChapterDetail
         },
         {
           path: 'contacts',

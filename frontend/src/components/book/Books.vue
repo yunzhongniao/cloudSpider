@@ -15,7 +15,6 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
 
 export default {
   name: 'Books',
@@ -41,14 +40,17 @@ export default {
     }]
     const datas = [{
       'id': 1,
+      'key': '1',
       'name': '三国演义',
       'desc': '三国演义的故事概要介绍'
     }, {
       'id': 2,
+      'key': '2',
       'name': '隋唐英雄传',
       'desc': '隋唐英雄传的故事概要介绍'
     }, {
       'id': 3,
+      'key': '3',
       'name': '水浒传',
       'desc': '水浒传的故事概要介绍'
     }]
@@ -66,19 +68,12 @@ export default {
     },
     onPreview: function (record) {
       console.log('preview', record)
-      this.$router.push('/books/book/' + record.id + '/record.chapters')
+      this.$router.push('/books/book/' + record.id + '/chapters')
     }
 
   },
   mounted () {
-    axios.get('books/list')
-      .then(function (response) {
-        console.log(response)
-        this.datas = response
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
+
   }
 
 }
